@@ -2993,6 +2993,8 @@ module.exports.getPosts = function (amt, start, types) {
         typeStr = 'Game,Movie,Book,Music,Opinion';
     }
 
+    console.log(typeStr);
+
     return _axios2.default.get(_api_keys.base + 'entries' + _api_keys.token + _api_keys.dateOrder + _api_keys.posts + '&skip=' + start + '&limit=' + amt + '&fields.type[in]=' + typeStr);
 };
 
@@ -29128,7 +29130,7 @@ var PostList = function (_Component) {
         value: function getPosts(props) {
             var _this2 = this;
 
-            _api_builder2.default.getPosts(props.postCount, props.postStart, props.types).then(function (res) {
+            _api_builder2.default.getPosts(props.postAmount, props.postStart, props.types).then(function (res) {
                 _this2.setState({ posts: res.data.items });
             }).catch(function (err) {
                 console.log(err);
